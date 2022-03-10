@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(HeftyCrops.MOD_ID)
 public class HeftyCrops {
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final String MOD_ID = "HeftyCrops";
+    public static final String MOD_ID = "heftycrops";
 
     public HeftyCrops() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

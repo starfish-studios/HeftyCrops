@@ -1,0 +1,10 @@
+{
+  "parent": "hefty_crops:custom/hefty_beetroot",
+  "textures": {
+    "all": "hefty_crops:blocks/beetroot_side",
+    "particle": "hefty_crops:blocks/beetroot_side",
+    "0": "hefty_crops:blocks/beetroot_side",
+    "1": "hefty_crops:blocks/beetroot_leaves",
+    "2": "hefty_crops:blocks/beetroot_top"
+  }
+}

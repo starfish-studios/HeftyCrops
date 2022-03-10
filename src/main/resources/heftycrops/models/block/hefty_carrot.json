@@ -1,0 +1,10 @@
+{
+  "parent": "hefty_crops:custom/hefty_carrot",
+  "textures": {
+    "all": "hefty_crops:blocks/carrot_side",
+    "particle": "hefty_crops:blocks/carrot_side",
+    "0": "hefty_crops:blocks/carrot_side",
+    "1": "hefty_crops:blocks/carrot_leaves",
+    "2": "hefty_crops:blocks/carrot_top"
+  }
+}

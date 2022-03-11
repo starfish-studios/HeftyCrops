@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "heftycrops:hefty_potato",
+    "heftycrops:hefty_carrot",
+    "heftycrops:hefty_beetroot"
+  ]
+}

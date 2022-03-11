@@ -10,19 +10,20 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.function.Supplier;
 
@@ -30,7 +31,10 @@ import java.util.function.Supplier;
 public class HeftyCrops {
     public static final String MOD_ID = "heftycrops";
 
+
     public HeftyCrops() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG);
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
@@ -40,31 +44,33 @@ public class HeftyCrops {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    // remove transparent bits
     private void doClientStuff(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(HEFTY_BEETROOT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_CARROT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_POTATO.get(), RenderType.cutout());
     }
 
-    // crop changing behavior
     @SubscribeEvent
     public void onCropGrow(BlockEvent.CropGrowEvent.Post event) {
         BlockPos pos = event.getPos();
         LevelAccessor level = event.getWorld();
         BlockState postState = event.getState();
-        if (level.getRandom().nextInt(10) == 0) { // 10% chance
-            if (postState.is(Blocks.BEETROOTS) && postState.getValue(BeetrootBlock.AGE) == BeetrootBlock.MAX_AGE) {
+        if (postState.is(Blocks.BEETROOTS) && postState.getValue(BeetrootBlock.AGE) == BeetrootBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_BEETROOT.get().defaultBlockState(), 3);
             }
-            if (postState.is(Blocks.CARROTS) && postState.getValue(CarrotBlock.AGE) == CarrotBlock.MAX_AGE) {
+        } else if (postState.is(Blocks.CARROTS) && postState.getValue(CarrotBlock.AGE) == CarrotBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_CARROT.get().defaultBlockState(), 3);
             }
-            if (postState.is(Blocks.POTATOES) && postState.getValue(PotatoBlock.AGE) == PotatoBlock.MAX_AGE) {
+        } else if (postState.is(Blocks.POTATOES) && postState.getValue(PotatoBlock.AGE) == PotatoBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_POTATO.get().defaultBlockState(), 3);
             }
         }
     }
+
+    // blocks
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
@@ -81,4 +87,21 @@ public class HeftyCrops {
         ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
         return registryObject;
     }
+
+    // config
+
+    public static ForgeConfigSpec COMMON_CONFIG;
+    public static final ForgeConfigSpec.IntValue HEFTY_CROP_WEIGHT;
+
+    static {
+        ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+        HEFTY_CROP_WEIGHT = COMMON_BUILDER.comment("Chance of hefty crop spawning. Larger number = rarer. A value of 1 will guarantee a hefty crop spawns.").defineInRange("weight", 10, 1, 100);
+        COMMON_CONFIG = COMMON_BUILDER.build();
+    }
+
+    @SubscribeEvent
+    public static void onLoad(final ModConfigEvent.Loading configEvent) { }
+
+    @SubscribeEvent
+    public static void onReload(final ModConfigEvent.Reloading configEvent) { }
 }

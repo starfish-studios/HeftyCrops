@@ -95,7 +95,7 @@ public class HeftyCrops {
 
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
-        HEFTY_CROP_WEIGHT = COMMON_BUILDER.comment("Chance of hefty crop spawning. Larger number = rarer. A value of 1 will guarantee a hefty crop spawns.").defineInRange("weight", 10, 1, 100);
+        HEFTY_CROP_WEIGHT = COMMON_BUILDER.comment("Chance of hefty crop spawning. Larger number = rarer. A value of 1 will guarantee a hefty crop spawns.").defineInRange("weight", 25, 1, 100);
         COMMON_CONFIG = COMMON_BUILDER.build();
     }
 

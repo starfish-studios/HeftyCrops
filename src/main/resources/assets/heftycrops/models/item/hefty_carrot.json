@@ -1,5 +1,5 @@
 {
-  "parent": "hefty_crops:block/hefty_carrot",
+  "parent": "heftycrops:block/hefty_carrot",
   "display": {
     "thirdperson": {
       "rotation": [

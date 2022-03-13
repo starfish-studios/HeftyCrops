@@ -48,6 +48,10 @@ public class HeftyCrops {
         ItemBlockRenderTypes.setRenderLayer(HEFTY_BEETROOT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_CARROT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_POTATO.get(), RenderType.cutout());
+
+        /* ItemBlockRenderTypes.setRenderLayer(HEFTY_CABBAGE.get(), RenderType.cutout()); */
+        /* ItemBlockRenderTypes.setRenderLayer(HEFTY_ONION.get(), RenderType.cutout()); */
+        /* ItemBlockRenderTypes.setRenderLayer(HEFTY_TOMATO.get(), RenderType.cutout()); */
     }
 
     @SubscribeEvent
@@ -55,6 +59,9 @@ public class HeftyCrops {
         BlockPos pos = event.getPos();
         LevelAccessor level = event.getWorld();
         BlockState postState = event.getState();
+
+        // Vanilla Crop Blocks
+
         if (postState.is(Blocks.BEETROOTS) && postState.getValue(BeetrootBlock.AGE) == BeetrootBlock.MAX_AGE) {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_BEETROOT.get().defaultBlockState(), 3);
@@ -68,13 +75,32 @@ public class HeftyCrops {
                 level.setBlock(pos, HEFTY_POTATO.get().defaultBlockState(), 3);
             }
         }
+        // Farmer's Delight Crop Blocks
+
+        /*
+        } else if (postState.is(Blocks.ONIONS) && postState.getValue(OnionBlock.AGE) == OnionBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
+                level.setBlock(pos, HEFTY_ONION.get().defaultBlockState(), 3);
+            }
+        } else if (postState.is(Blocks.TOMATOES) && postState.getValue(TomatoBlock.AGE) == TomatoBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
+                level.setBlock(pos, HEFTY_TOMATO.get().defaultBlockState(), 3);
+            }
+        } else if (postState.is(Blocks.ONIONS) && postState.getValue(OnionBlock.AGE) == OnionBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
+                level.setBlock(pos, HEFTY_ONION.get().defaultBlockState(), 3);
+            }
+        }
+
+        */
     }
 
-    // blocks
+    // Blocks
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
+    // Vanilla Crop Blocks
     public static final RegistryObject<Block> HEFTY_BEETROOT = registerBlock("hefty_beetroot",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HEFTY_CARROT = registerBlock("hefty_carrot",
@@ -82,9 +108,15 @@ public class HeftyCrops {
     public static final RegistryObject<Block> HEFTY_POTATO = registerBlock("hefty_potato",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
 
+/*    // Farmer's Delight Crop Blocks
+    public static final RegistryObject<Block> HEFTY_ONION = registerBlock("hefty_onion",
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> HEFTY_TOMATO = registerBlock("hefty_tomato",
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.HONEY_BLOCK).requiresCorrectToolForDrops()));*/
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> registryObject = BLOCKS.register(name, block);
-        ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+        ITEMS.register(name, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
         return registryObject;
     }
 

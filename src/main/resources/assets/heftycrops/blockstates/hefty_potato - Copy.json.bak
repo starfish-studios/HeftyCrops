@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "heftycrops:block/hefty_potato"
+    }
+  }
+}

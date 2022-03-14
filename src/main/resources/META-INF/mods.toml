@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[40,)"
+loaderVersion="[39,)"
 license="All rights reserved"
 
 [[mods]]
 modId="heftycrops"
-version="1.0.0"
+version="1.0"
 displayName="Hefty Crops"
 logoFile="logo.png"
 authors="crispytwig"
@@ -15,14 +15,21 @@ Crops but HEFTY!
 [[dependencies.heftycrops]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.heftycrops]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.heftycrops]]
+modId = "farmersdelight"
+mandatory = true
+versionRange = "[1.0.3,)"
+ordering = "AFTER"
+side = "BOTH"
 

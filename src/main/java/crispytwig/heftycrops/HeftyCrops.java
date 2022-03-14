@@ -47,6 +47,7 @@ public class HeftyCrops {
     private void doClientStuff(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(HEFTY_BEETROOT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_CARROT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(HEFTY_COCOA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(HEFTY_POTATO.get(), RenderType.cutout());
 
         /* ItemBlockRenderTypes.setRenderLayer(HEFTY_CABBAGE.get(), RenderType.cutout()); */
@@ -69,6 +70,10 @@ public class HeftyCrops {
         } else if (postState.is(Blocks.CARROTS) && postState.getValue(CarrotBlock.AGE) == CarrotBlock.MAX_AGE) {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_CARROT.get().defaultBlockState(), 3);
+            }
+        } else if (postState.is(Blocks.COCOA) && postState.getValue(CocoaBlock.AGE) == CocoaBlock.MAX_AGE) {
+            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
+                level.setBlock(pos, HEFTY_COCOA.get().defaultBlockState(), 3);
             }
         } else if (postState.is(Blocks.POTATOES) && postState.getValue(PotatoBlock.AGE) == PotatoBlock.MAX_AGE) {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
@@ -104,6 +109,8 @@ public class HeftyCrops {
     public static final RegistryObject<Block> HEFTY_BEETROOT = registerBlock("hefty_beetroot",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HEFTY_CARROT = registerBlock("hefty_carrot",
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> HEFTY_COCOA = registerBlock("hefty_cocoa",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HEFTY_POTATO = registerBlock("hefty_potato",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));

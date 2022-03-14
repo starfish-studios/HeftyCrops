@@ -15,6 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -24,6 +25,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import vectorwing.farmersdelight.common.block.*;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.function.Supplier;
 
@@ -79,24 +83,15 @@ public class HeftyCrops {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_POTATO.get().defaultBlockState(), 3);
             }
-        }
-        // Farmer's Delight Crop Blocks
-
-        /*
-        } else if (postState.is(Blocks.ONIONS) && postState.getValue(OnionBlock.AGE) == OnionBlock.MAX_AGE) {
+        } else if (ModList.get().isLoaded("farmersdelight") && (postState.is(ModBlocks.ONION_CROP.get()) && postState.getValue(OnionBlock.AGE) == OnionBlock.MAX_AGE)) {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_ONION.get().defaultBlockState(), 3);
             }
-        } else if (postState.is(Blocks.TOMATOES) && postState.getValue(TomatoBlock.AGE) == TomatoBlock.MAX_AGE) {
+        }
+            /* else if (postState.is(Blocks.TOMATOES) && postState.getValue(TomatoBlock.AGE) == TomatoBlock.MAX_AGE) {
             if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
                 level.setBlock(pos, HEFTY_TOMATO.get().defaultBlockState(), 3);
             }
-        } else if (postState.is(Blocks.ONIONS) && postState.getValue(OnionBlock.AGE) == OnionBlock.MAX_AGE) {
-            if (level.getRandom().nextInt(HEFTY_CROP_WEIGHT.get()) == 0) {
-                level.setBlock(pos, HEFTY_ONION.get().defaultBlockState(), 3);
-            }
-        }
-
         */
     }
 
@@ -115,10 +110,10 @@ public class HeftyCrops {
     public static final RegistryObject<Block> HEFTY_POTATO = registerBlock("hefty_potato",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
 
-/*    // Farmer's Delight Crop Blocks
+    // Farmer's Delight Crop Blocks
     public static final RegistryObject<Block> HEFTY_ONION = registerBlock("hefty_onion",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> HEFTY_TOMATO = registerBlock("hefty_tomato",
+    /* public static final RegistryObject<Block> HEFTY_TOMATO = registerBlock("hefty_tomato",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.HONEY_BLOCK).requiresCorrectToolForDrops()));*/
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

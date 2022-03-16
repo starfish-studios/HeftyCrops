@@ -22,14 +22,14 @@ Crops but HEFTY!
 [[dependencies.heftycrops]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.1,1.18.2)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.heftycrops]]
-modId = "farmersdelight"
-mandatory = false
-versionRange = "[1.0.3,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "farmersdelight"
+    mandatory = false
+    versionRange = "[1.0.3,)"
+    ordering = "NONE"
+    side = "BOTH"
 

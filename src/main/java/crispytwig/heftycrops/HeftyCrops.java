@@ -55,7 +55,7 @@ public class HeftyCrops {
         ItemBlockRenderTypes.setRenderLayer(HEFTY_POTATO.get(), RenderType.cutout());
 
         /* ItemBlockRenderTypes.setRenderLayer(HEFTY_CABBAGE.get(), RenderType.cutout()); */
-        /* ItemBlockRenderTypes.setRenderLayer(HEFTY_ONION.get(), RenderType.cutout()); */
+         ItemBlockRenderTypes.setRenderLayer(HEFTY_ONION.get(), RenderType.cutout());
         /* ItemBlockRenderTypes.setRenderLayer(HEFTY_TOMATO.get(), RenderType.cutout()); */
     }
 
@@ -102,17 +102,17 @@ public class HeftyCrops {
 
     // Vanilla Crop Blocks
     public static final RegistryObject<Block> HEFTY_BEETROOT = registerBlock("hefty_beetroot",
-            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(0.5F).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> HEFTY_CARROT = registerBlock("hefty_carrot",
-            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(0.5F).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> HEFTY_COCOA = registerBlock("hefty_cocoa",
-            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(0.5F).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> HEFTY_POTATO = registerBlock("hefty_potato",
-            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(0.5F).sound(SoundType.SHROOMLIGHT)));
 
     // Farmer's Delight Crop Blocks
     public static final RegistryObject<Block> HEFTY_ONION = registerBlock("hefty_onion",
-            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.SHROOMLIGHT).requiresCorrectToolForDrops()));
+            () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(0.5F).sound(SoundType.SHROOMLIGHT)));
     /* public static final RegistryObject<Block> HEFTY_TOMATO = registerBlock("hefty_tomato",
             () -> new Block(Block.Properties.of(Material.VEGETABLE).strength(1.0F, 1.0F).sound(SoundType.HONEY_BLOCK).requiresCorrectToolForDrops()));*/
 

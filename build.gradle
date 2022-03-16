@@ -63,6 +63,10 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'heftycrops'
 
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.refMapRemappingFile",
+                    "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 heftycrops {
                     source sourceSets.main

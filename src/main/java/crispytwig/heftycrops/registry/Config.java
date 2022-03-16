@@ -7,14 +7,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 @Mod.EventBusSubscriber(modid = HeftyCrops.MOD_ID)
-public class HCConfig {
+public class Config {
     public static final ForgeConfigSpec.IntValue HEFTY_CROP_WEIGHT;
     public static ForgeConfigSpec COMMON_CONFIG;
 
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
         HEFTY_CROP_WEIGHT = COMMON_BUILDER.comment("Chance of hefty crop spawning. Larger number = rarer. A value of 1 will guarantee a hefty crop spawns.").defineInRange("weight", 25, 1, 100);
-        HCConfig.COMMON_CONFIG = COMMON_BUILDER.build();
+        Config.COMMON_CONFIG = COMMON_BUILDER.build();
     }
 
     @SubscribeEvent

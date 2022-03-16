@@ -25,7 +25,7 @@
                   }
                 }
               ],
-              "name": "heftycrops:hefty_carrot"
+              "name": "heftycrops:hefty_beetroot"
             },
             {
               "type": "minecraft:item",
@@ -34,8 +34,8 @@
                   "function": "minecraft:set_count",
                   "count": {
                     "type": "minecraft:uniform",
-                    "min": 3.0,
-                    "max": 7.0
+                    "min": 2.0,
+                    "max": 3.0
                   },
                   "add": false
                 },
@@ -50,14 +50,14 @@
                 {
                   "function": "minecraft:limit_count",
                   "limit": {
-                    "max": 9.0
+                    "max": 5.0
                   }
                 },
                 {
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "minecraft:carrot"
+              "name": "farmersdelight:cabbage"
             }
           ]
         }

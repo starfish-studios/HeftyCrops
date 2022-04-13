@@ -1,35 +1,34 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[40,)"
 license="All rights reserved"
 
 [[mods]]
 modId="heftycrops"
-version="1.0"
+version="1.18.2-1.1"
 displayName="Hefty Crops"
 logoFile="logo.png"
-authors="crispytwig"
+authors="crispytwig, SameButDifferent"
 description='''
-Crops but HEFTY!
-'''
+Hefty Crops is a lightweight farming mod with the goal of adding slight variation to Vanilla farming.'''
 
 [[dependencies.heftycrops]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.heftycrops]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.18.2)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.heftycrops]]
     modId = "farmersdelight"
     mandatory = false
-    versionRange = "[1.0.3,)"
+    versionRange = "[1.0.4,)"
     ordering = "NONE"
     side = "BOTH"
 

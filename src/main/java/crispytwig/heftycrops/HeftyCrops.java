@@ -53,9 +53,13 @@ public class HeftyCrops {
 
     @SubscribeEvent
     public void onCropGrow(BlockEvent.CropGrowEvent.Post event) {
+        if(Config.HEFTY_CROP_WEIGHT.get() == 0) return;
+
         BlockPos pos = event.getPos();
         LevelAccessor level = event.getWorld();
         BlockState postState = event.getState();
+
+        if(Config.HEFTY_CROP_REQUIRES_UNOBSTRUCTED_SKYVIEW.get() && !level.canSeeSky(pos)) return;
 
 
         // Vanilla Crop Blocks
